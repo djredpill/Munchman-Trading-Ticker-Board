@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#121816">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Paper Desk">
+  <meta name="description" content="Paper Desk Terminal. Pretend $500 book. Paper only, with no real orders.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f0b429'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='18' font-family='sans-serif' font-weight='700' fill='%23241a07'%3E$%3C/text%3E%3C/svg%3E">
+  <title>Paper Desk Terminal</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #121816;
+      --card: #1b2622;
+      --ink: #f4f7f5;
+      --muted: #b7c4bc;
+      --line: #31423b;
+      --amber: #f0b429;
+      --amber-ink: #241a07;
+      --flat: #e7eee9;
+      --up: #9ee0b6;
+      --down: #ffb7ae;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(1200px 500px at 10% -10%, rgba(240, 180, 41, 0.08), transparent 50%),
+        var(--bg);
+      color: var(--ink);
+      font: 17px/1.45 "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+      padding-bottom: env(safe-area-inset-bottom);
+      touch-action: manipulation;
+    }
+    .banner {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: var(--amber);
+      color: var(--amber-ink);
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      padding: calc(12px + env(safe-area-inset-top)) 20px 12px;
+      text-align: center;
+    }
+    main {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 22px 20px 48px;
+    }
+    header.top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px 28px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+    h1 { font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.1; margin: 0 0 8px; }
+    h2 { font-size: 1.05rem; margin: 0; letter-spacing: 0.02em; }
+    .lede, .quiet, .hint { color: var(--muted); }
+    .lede { margin: 0; max-width: 38rem; }
+    .clock-block { text-align: right; }
+    .clock {
+      font-family: ui-monospace, "SF Mono", "Menlo", monospace;
+      font-size: clamp(2.3rem, 5vw, 3.3rem);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+    }
+    .clock-date, .clock-local { margin: 6px 0 0; color: var(--muted); }
+    .status-row, .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .status-row {
+      background: #24312c;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+    #quote-status { margin: 0; flex: 1 1 240px; }
+    button {
+      min-height: 48px;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--amber);
+      color: var(--amber-ink);
+      font: inherit;
+      font-weight: 800;
+    }
+    button:disabled { opacity: 0.55; }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .card, .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    .card { padding: 16px; }
+    .panel { padding: 16px 16px 8px; margin: 14px 0; }
+    .label {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .value {
+      font-family: ui-monospace, "SF Mono", "Menlo", monospace;
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+      font-variant-numeric: tabular-nums;
+      margin: 8px 0 0;
+      overflow-wrap: anywhere;
+    }
+    .hint { margin: 6px 0 0; font-size: 0.92rem; }
+    .up { color: var(--up); }
+    .down { color: var(--down); }
+    .flat { color: var(--flat); }
+    .price-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .price {
+      padding: 14px;
+      border-radius: 14px;
+      background: #141c19;
+      border: 1px solid var(--line);
+    }
+    .price-top, .event-top, .split-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .symbol { font-weight: 800; }
+    .price-value {
+      font-family: ui-monospace, "SF Mono", "Menlo", monospace;
+      font-size: clamp(1.5rem, 3vw, 1.9rem);
+      font-variant-numeric: tabular-nums;
+      margin: 8px 0 4px;
+    }
+    .pill {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: #2a3832;
+    }
+    .pill.live { background: #1d4634; color: var(--up); }
+    .pill.snapshot { background: #3a3424; color: var(--amber); }
+    .kind-error .pill { background: #4a2a28; color: var(--down); }
+    .kind-skipped .pill { background: #3a3424; color: var(--amber); }
+    .kind-started .pill, .kind-entered .pill { background: #1d4634; color: var(--up); }
+    svg#equity-chart { width: 100%; height: auto; display: block; margin-top: 8px; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 8px; }
+    table { width: 100%; border-collapse: collapse; min-width: 560px; }
+    th, td {
+      text-align: left;
+      padding: 12px 8px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th { color: var(--muted); font-size: 0.82rem; font-weight: 700; }
+    td { font-variant-numeric: tabular-nums; }
+    .feed {
+      max-height: 32rem;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 8px;
+      padding-right: 4px;
+    }
+    .event { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .event p { margin: 6px 0 0; overflow-wrap: anywhere; }
+    .empty { color: var(--muted); margin: 12px 0; }
+    footer {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 0 20px 28px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    footer p { margin: 0 0 8px; }
+    a { color: var(--amber); }
+    @media (max-width: 839px) {
+      header.top { grid-template-columns: 1fr; }
+      .clock-block { text-align: left; }
+    }
+    @media (min-width: 700px) {
+      .price-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (min-width: 980px) {
+      .metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner" role="note">PAPER ONLY. Pretend money. Not real trades. No real orders.</div>
+  <main>
+    <header class="top">
+      <div>
+        <h1>Paper Desk Terminal</h1>
+        <p class="lede">A public view of the pretend $500 paper book. Quote refresh only updates prices on this screen.</p>
+      </div>
+      <div class="clock-block">
+        <div class="clock" id="clock" aria-hidden="true">--:--:--</div>
+        <p class="clock-date" id="clock-date">Eastern time</p>
+        <p class="clock-local" id="clock-local">This device</p>
+      </div>
+    </header>
+
+    <div class="status-row">
+      <p id="quote-status">Opening the committed paper snapshot…</p>
+      <button type="button" id="refresh">Refresh quotes</button>
+    </div>
+
+    <section class="metrics" aria-label="Paper account">
+      <article class="card">
+        <div class="label">Paper equity</div>
+        <p class="value" id="equity">$500.00</p>
+        <p class="hint" id="equity-hint">Pretend start $500.00</p>
+      </article>
+      <article class="card">
+        <div class="label">Available pretend cash</div>
+        <p class="value" id="cash">$500.00</p>
+        <p class="hint">Unspent paper cash</p>
+      </article>
+      <article class="card">
+        <div class="label">Paper P&amp;L versus $500</div>
+        <p class="value flat" id="pnl">$0.00</p>
+        <p class="hint" id="pnl-hint">$0.00 versus the $500 start</p>
+      </article>
+      <article class="card">
+        <div class="label">Open / closed</div>
+        <p class="value" id="counts">0 / 0</p>
+        <p class="hint" id="counts-hint">Positions and closed trades</p>
+      </article>
+    </section>
+
+    <section class="panel" aria-labelledby="prices-heading">
+      <div class="section-head">
+        <h2 id="prices-heading">Watched prices</h2>
+        <p class="quiet" id="book-line">Paper book snapshot</p>
+      </div>
+      <div class="price-grid" id="prices"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="chart-heading">
+      <h2 id="chart-heading">Paper equity</h2>
+      <svg id="equity-chart" viewBox="0 0 640 180" role="img" aria-label="Paper equity chart"></svg>
+      <p class="hint" id="chart-note">Waiting for the snapshot history.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="positions-heading">
+      <h2 id="positions-heading">Open paper positions</h2>
+      <div id="positions"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="closed-heading">
+      <h2 id="closed-heading">Closed paper trades</h2>
+      <div id="closed"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="activity-heading">
+      <h2 id="activity-heading">Activity</h2>
+      <p class="hint" id="activity-note"></p>
+      <div class="feed" id="activity"></div>
+    </section>
+  </main>
+  <footer>
+    <p>PAPER ONLY. This Pages site is public. Starting pretend money is $500. The screen shows a saved paper book plus optional public quotes. It does not send exchange orders.</p>
+    <p>Snapshot file: snapshot.json · Desk clock: America/New_York · <a href="https://github.com/djredpill/Munchman-Trading-Ticker-Board">Repository</a></p>
+  </footer>
+  <script>
+    const EASTERN = "America/New_York";
+    const START = 500;
+    const KRAKEN_PAIRS = { "BTC/USD": "XXBTZUSD", "ETH/USD": "XETHZUSD", "SOL/USD": "SOLUSD" };
+    const FALLBACK_BOOK = {
+      display_name: "Paper Desk Terminal",
+      mode: "PAPER ONLY",
+      starting_balance: 500,
+      cash: 500,
+      equity: 500,
+      pnl: 0,
+      realized_pnl: 0,
+      unrealized_pnl: 0,
+      positions: [],
+      closed: [],
+      trade_count: 0,
+      entries: 0,
+      cycles: 21,
+      last_cycle: "2026-11-06T16:24:54-05:00",
+      started: "2026-11-06T16:03:15-05:00",
+      source: "kraken public market data",
+      status_at_snapshot: "running",
+      symbols: ["BTC/USD", "ETH/USD", "SOL/USD"],
+      prices: {
+        "BTC/USD": { price: 75785.6, seen: "2026-11-06T16:24:49-05:00", source: "kraken" },
+        "ETH/USD": { price: 2227.28, seen: "2026-11-06T16:24:52-05:00", source: "kraken" },
+        "SOL/USD": { price: 89.94, seen: "2026-11-06T16:24:54-05:00", source: "kraken" }
+      },
+      activity: [],
+      equity_history: [],
+      usingFallback: true
+    };
+
+    const el = (id) => document.getElementById(id);
+    let book = FALLBACK_BOOK;
+    let liveQuotes = null;
+    let quoteRequest = 0;
+
+    function esc(value) {
+      return String(value == null ? "" : value).replace(/[&<>"']/g, (ch) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[ch]));
+    }
+
+    function money(value) {
+      const num = Number(value);
+      if (!Number.isFinite(num)) return "—";
+      return num.toLocaleString("en-US", { style: "currency", currency: "USD" });
+    }
+
+    function signedMoney(value) {
+      const num = Number(value);
+      if (!Number.isFinite(num)) return "—";
+      if (num > 0) return "+" + money(num);
+      if (num < 0) return "−" + money(Math.abs(num));
+      return money(0);
+    }
+
+    function tone(value) {
+      const num = Number(value);
+      if (num > 0.004) return "up";
+      if (num < -0.004) return "down";
+      return "flat";
+    }
+
+    function formatWhen(value) {
+      const date = value instanceof Date ? value : new Date(value);
+      if (Number.isNaN(date.getTime())) return "—";
+      return new Intl.DateTimeFormat("en-US", {
+        timeZone: EASTERN,
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit",
+        timeZoneName: "short"
+      }).format(date);
+    }
+
+    function tick() {
+      const now = new Date();
+      el("clock").textContent = new Intl.DateTimeFormat("en-US", {
+        timeZone: EASTERN,
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hourCycle: "h23"
+      }).format(now);
+      el("clock-date").textContent = new Intl.DateTimeFormat("en-US", {
+        timeZone: EASTERN,
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+      }).format(now) + " · Eastern";
+      el("clock-local").textContent = "This device · " + new Intl.DateTimeFormat("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit",
+        timeZoneName: "short"
+      }).format(now);
+    }
+
+    function symbolsOf(data) {
+      const fromBook = Array.isArray(data.symbols) && data.symbols.length ? data.symbols : Object.keys(data.prices || {});
+      return fromBook.length ? fromBook : ["BTC/USD", "ETH/USD", "SOL/USD"];
+    }
+
+    function markedBook(data, quotes) {
+      const start = Number(data.starting_balance);
+      const starting = Number.isFinite(start) ? start : START;
+      const cash = Number(data.cash);
+      const safeCash = Number.isFinite(cash) ? cash : starting;
+      const positions = (data.positions || []).map((position) => {
+        const quote = quotes && quotes[position.symbol];
+        const mark = quote ? quote.price : Number(position.mark || position.entry);
+        const qty = Number(position.qty) || 0;
+        const entry = Number(position.entry);
+        const value = Number.isFinite(mark) ? qty * mark : 0;
+        const unrealized = Number.isFinite(mark) && Number.isFinite(entry) ? (mark - entry) * qty : 0;
+        return Object.assign({}, position, { mark, value, unrealized });
+      });
+      const positionValue = positions.reduce((sum, position) => sum + (Number(position.value) || 0), 0);
+      const equity = safeCash + positionValue;
+      const pnl = equity - starting;
+      return { starting, cash: safeCash, equity, pnl, positions };
+    }
+
+    function drawChart(points, starting) {
+      const svg = el("equity-chart");
+      const note = el("chart-note");
+      const usable = (points || []).filter((point) => Number.isFinite(Number(point.value)));
+      if (usable.length < 2) {
+        svg.innerHTML = "";
+        svg.setAttribute("aria-label", "Paper equity history is a flat $500 snapshot");
+        note.textContent = "The saved book is flat at " + money(starting) + ".";
+        return;
+      }
+      const values = usable.map((point) => Number(point.value));
+      const flat = values.every((value) => Math.abs(value - starting) < 0.005);
+      let low = Math.min(starting, ...values);
+      let high = Math.max(starting, ...values);
+      if (high - low < 0.5) {
+        low = starting - 1;
+        high = starting + 1;
+      } else {
+        const pad = (high - low) * 0.25;
+        low -= pad;
+        high += pad;
+      }
+      const left = 72;
+      const right = 632;
+      const top = 18;
+      const bottom = 150;
+      const xAt = (index) => left + (index * (right - left)) / (usable.length - 1);
+      const yAt = (value) => bottom - ((value - low) / (high - low)) * (bottom - top);
+      const path = usable.map((point, index) => (index ? "L" : "M") + xAt(index).toFixed(1) + "," + yAt(Number(point.value)).toFixed(1)).join(" ");
+      const last = usable[usable.length - 1];
+      const yStart = yAt(starting).toFixed(1);
+      const highLabel = flat ? money(starting) : money(Math.max(...values));
+      const lowLabel = flat ? money(starting) : money(Math.min(...values));
+      svg.innerHTML =
+        '<line x1="' + left + '" y1="' + yStart + '" x2="' + right + '" y2="' + yStart + '" stroke="#8ea399" stroke-dasharray="4 6"/>' +
+        '<path d="' + path + '" fill="none" stroke="#f0b429" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>' +
+        '<circle cx="' + xAt(usable.length - 1).toFixed(1) + '" cy="' + yAt(Number(last.value)).toFixed(1) + '" r="4.5" fill="#f0b429"/>' +
+        '<text x="4" y="' + (Number(yStart) - 6).toFixed(1) + '" fill="#b7c4bc" font-size="12">' + esc(highLabel) + "</text>" +
+        (flat ? "" : '<text x="4" y="172" fill="#b7c4bc" font-size="12">' + esc(lowLabel) + "</text>");
+      const label = flat
+        ? "Paper equity stayed at " + money(starting) + " across " + usable.length + " recorded observations"
+        : "Paper equity across " + usable.length + " recorded observations";
+      svg.setAttribute("aria-label", label);
+      note.textContent = flat
+        ? usable.length + " recorded observations, all at " + money(starting) + ". The dashed line is the $500 start."
+        : usable.length + " recorded observations. The dashed line is the " + money(starting) + " start.";
+    }
+
+    function renderPrices(data, quotes) {
+      const symbols = symbolsOf(data);
+      el("prices").innerHTML = symbols.map((symbol) => {
+        const live = quotes && quotes[symbol];
+        const saved = (data.prices || {})[symbol] || {};
+        const price = live ? live.price : saved.price;
+        const seen = live ? live.seen : saved.seen;
+        const source = live ? live.source : (saved.source || "snapshot");
+        const mode = live ? "live" : "snapshot";
+        const modeLabel = live ? "Live" : "Snapshot";
+        return '<article class="price"><div class="price-top"><span class="symbol">' + esc(symbol) +
+          '</span><span class="pill ' + mode + '">' + modeLabel + "</span></div><p class=\"price-value\">" +
+          esc(money(price)) + "</p><p class=\"hint\">" + esc(source) + "</p><p class=\"hint\">As of " + esc(formatWhen(seen)) + "</p></article>";
+      }).join("");
+    }
+
+    function renderPositions(positions) {
+      const root = el("positions");
+      if (!positions.length) {
+        root.innerHTML = '<p class="empty">No open paper positions.</p>';
+        return;
+      }
+      const rows = positions.map((position) =>
+        "<tr><td>" + esc(position.symbol) + "</td><td>" + esc(Number(position.qty).toLocaleString("en-US", { maximumFractionDigits: 8 })) +
+        "</td><td>" + esc(money(position.entry)) + "</td><td>" + esc(money(position.mark)) +
+        "</td><td>" + esc(money(position.stop)) + "</td><td>" + esc(money(position.target)) +
+        "</td><td class=\"" + tone(position.unrealized) + "\">" + esc(signedMoney(position.unrealized)) + "</td></tr>"
+      ).join("");
+      root.innerHTML = '<div class="table-wrap"><table><thead><tr><th>Asset</th><th>Quantity</th><th>Entry</th><th>Mark</th><th>Stop</th><th>Target</th><th>Unrealized</th></tr></thead><tbody>' +
+        rows + "</tbody></table></div>";
+    }
+
+    function renderClosed(trades) {
+      const root = el("closed");
+      const list = Array.isArray(trades) ? trades : [];
+      if (!list.length) {
+        root.innerHTML = '<p class="empty">No closed paper trades.</p>';
+        return;
+      }
+      const rows = list.slice().reverse().map((trade) =>
+        "<tr><td>" + esc(trade.symbol) + "</td><td>" + esc(money(trade.exit)) +
+        "</td><td class=\"" + tone(trade.pnl) + "\">" + esc(signedMoney(trade.pnl)) + "</td></tr>"
+      ).join("");
+      root.innerHTML = '<div class="table-wrap"><table><thead><tr><th>Asset</th><th>Exit</th><th>Net P&amp;L</th></tr></thead><tbody>' +
+        rows + "</tbody></table></div>";
+    }
+
+    function renderActivity(events) {
+      const list = Array.isArray(events) ? events : [];
+      const newest = list.slice(-40).reverse();
+      el("activity-note").textContent = list.length
+        ? "Latest " + newest.length + " of " + list.length + " events saved in this snapshot."
+        : "Activity loads with snapshot.json.";
+      el("activity").innerHTML = newest.map((event) => {
+        const kind = String(event.kind || "note");
+        return '<article class="event kind-' + esc(kind) + '"><div class="event-top"><span class="pill">' +
+          esc(kind) + "</span><span>" + esc(event.symbol || "Book") + "</span><time>" +
+          esc(formatWhen(event.ts)) + "</time></div><p>" + esc(event.detail || "") + "</p></article>";
+      }).join("") || '<p class="empty">No activity in the loaded snapshot.</p>';
+    }
+
+    function render(data, quotes) {
+      const marked = markedBook(data, quotes);
+      const openCount = marked.positions.length;
+      const closedCount = Array.isArray(data.closed) ? data.closed.length : Number(data.trade_count) || 0;
+      el("equity").textContent = money(marked.equity);
+      el("equity-hint").textContent = "Pretend start " + money(marked.starting);
+      el("cash").textContent = money(marked.cash);
+      el("pnl").textContent = signedMoney(marked.pnl);
+      el("pnl").className = "value " + tone(marked.pnl);
+      el("pnl-hint").textContent = signedMoney(marked.pnl) + " versus the " + money(marked.starting) + " start. Realized " +
+        money(data.realized_pnl || 0) + " · unrealized " + money(openCount ? marked.positions.reduce((sum, position) => sum + position.unrealized, 0) : (data.unrealized_pnl || 0));
+      el("counts").textContent = openCount + " / " + closedCount;
+      el("counts-hint").textContent = (data.entries || 0) + " paper entries in the snapshot";
+      const recorded = data.status_at_snapshot ? " Snapshot status was " + data.status_at_snapshot + "." : "";
+      el("book-line").textContent = "Paper book as of " + formatWhen(data.last_cycle) + " · " +
+        (data.cycles || 0) + " cycles." + recorded;
+      renderPrices(data, quotes);
+      drawChart(data.equity_history || [], marked.starting);
+      renderPositions(marked.positions);
+      renderClosed(data.closed || []);
+      renderActivity(data.activity || []);
+      document.body.dataset.ready = "1";
+      document.body.dataset.equity = String(marked.equity);
+    }
+
+    function timeoutSignal(ms) {
+      if (typeof AbortSignal !== "undefined" && typeof AbortSignal.timeout === "function") {
+        return AbortSignal.timeout(ms);
+      }
+      const controller = new AbortController();
+      setTimeout(() => controller.abort(), ms);
+      return controller.signal;
+    }
+
+    async function fetchKraken(symbols) {
+      const pairs = symbols.map((symbol) => KRAKEN_PAIRS[symbol]).filter(Boolean);
+      if (pairs.length !== symbols.length) throw new Error("unsupported symbol");
+      const response = await fetch("https://api.kraken.com/0/public/Ticker?pair=" + encodeURIComponent(pairs.join(",")), {
+        cache: "no-store",
+        signal: timeoutSignal(8000)
+      });
+      if (!response.ok) throw new Error("Kraken HTTP " + response.status);
+      const payload = await response.json();
+      if (payload.error && payload.error.length) throw new Error(payload.error.join("; "));
+      const seen = new Date().toISOString();
+      const quotes = {};
+      symbols.forEach((symbol) => {
+        const row = payload.result && payload.result[KRAKEN_PAIRS[symbol]];
+        const price = row && row.c ? Number(row.c[0]) : NaN;
+        if (!Number.isFinite(price)) throw new Error("Kraken missing " + symbol);
+        quotes[symbol] = { price, seen, source: "kraken public ticker" };
+      });
+      return { source: "Kraken public ticker", quotes };
+    }
+
+    async function fetchCoinbase(symbols) {
+      const seenFallback = new Date().toISOString();
+      const quotes = {};
+      await Promise.all(symbols.map(async (symbol) => {
+        const product = symbol.replace("/", "-");
+        const response = await fetch("https://api.exchange.coinbase.com/products/" + product + "/ticker", {
+          cache: "no-store",
+          signal: timeoutSignal(8000)
+        });
+        if (!response.ok) throw new Error("Coinbase HTTP " + response.status);
+        const payload = await response.json();
+        const price = Number(payload.price);
+        if (!Number.isFinite(price)) throw new Error("Coinbase missing " + symbol);
+        quotes[symbol] = { price, seen: payload.time || seenFallback, source: "coinbase exchange public ticker" };
+      }));
+      return { source: "Coinbase Exchange public ticker", quotes };
+    }
+
+    async function refreshQuotes() {
+      const requestId = ++quoteRequest;
+      const button = el("refresh");
+      button.disabled = true;
+      const symbols = symbolsOf(book);
+      el("quote-status").textContent = "Checking public quotes for " + symbols.join(", ") + "…";
+      let result = null;
+      let problem = "";
+      try {
+        result = await fetchKraken(symbols);
+      } catch (krakenError) {
+        try {
+          result = await fetchCoinbase(symbols);
+        } catch (coinbaseError) {
+          problem = "Public quote feeds did not load. Showing snapshot prices.";
+        }
+      }
+      if (requestId !== quoteRequest) return;
+      if (result) {
+        liveQuotes = result.quotes;
+        const sample = result.quotes[symbols[0]];
+        el("quote-status").textContent = "Quotes refreshed from " + result.source + " · " + formatWhen(sample.seen) + ". Display only.";
+        document.body.dataset.quotes = "live";
+      } else {
+        liveQuotes = null;
+        el("quote-status").textContent = problem + " As of " + formatWhen((book.prices[symbols[0]] || {}).seen) + ".";
+        document.body.dataset.quotes = "snapshot";
+      }
+      render(book, liveQuotes);
+      setTimeout(() => { button.disabled = false; }, 4000);
+    }
+
+    async function loadSnapshot() {
+      try {
+        const response = await fetch("snapshot.json", { cache: "no-store" });
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        const data = await response.json();
+        if (data.paper_only === false || data.live_trading === true) throw new Error("snapshot is not paper-only");
+        book = data;
+        book.usingFallback = false;
+      } catch (error) {
+        book = FALLBACK_BOOK;
+        el("quote-status").textContent = "snapshot.json did not load (" + error.message + "). Showing the built-in $500 paper book.";
+      }
+      render(book, liveQuotes);
+      refreshQuotes();
+    }
+
+    tick();
+    setInterval(tick, 1000);
+    el("refresh").addEventListener("click", refreshQuotes);
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") refreshQuotes();
+    });
+    setInterval(() => {
+      if (document.visibilityState === "visible") refreshQuotes();
+    }, 60000);
+    loadSnapshot();
+  </script>
+</body>
+</html>
