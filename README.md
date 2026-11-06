@@ -1,11 +1,9 @@
-# Paper Desk Terminal
+# Munchman Trading Board
 
-Public paper-only screen for Mr. Munchman's pretend trading desk.
+Practice board for stocks and ETFs. It starts with **$500 of pretend money**. No real money is used, and the page cannot place real orders.
 
-This site is **paper only**. It starts from **$500 of pretend money**. It does not connect to a brokerage, and it cannot place real orders.
-
-The GitHub Pages URL is public. Anyone with the link can open it:
+The GitHub Pages site is public:
 
 https://djredpill.github.io/Munchman-Trading-Ticker-Board/
 
-`index.html` reads the committed book in `snapshot.json` (about $500 cash and equity, $0 P&L, no open positions, and no closed trades). When the browser can reach a public price feed, the page refreshes displayed BTC, ETH, and SOL quotes. Those quotes are display-only. If the feed is blocked, the page keeps the snapshot prices and their as-of times.
+`snapshot.json` is the starting practice book: $500 cash, $500 equity, $0 P&L, no positions, and no trades. It does not store market prices. The page may refresh a small ETF watchlist from a public delayed quote feed. Individual stock prices are shown as unavailable. Refreshing quotes does not change the practice account and does not send an order. No broker and no stock-trading engine are connected.
