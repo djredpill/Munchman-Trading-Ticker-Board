@@ -1,0 +1,938 @@
+{
+  "display_name": "Paper Desk Terminal",
+  "mode": "PAPER ONLY",
+  "paper_only": true,
+  "live_trading": false,
+  "notice": "Pretend money only. This file is a paper-account snapshot. It does not place real trades or send real orders.",
+  "timezone": "America/New_York",
+  "started": "2026-11-06T16:03:15-05:00",
+  "deadline": "2026-11-20T16:03:15.503980-05:00",
+  "last_cycle": "2026-11-06T16:24:54-05:00",
+  "starting_balance": 500.0,
+  "cash": 500.0,
+  "equity": 500.0,
+  "pnl": 0.0,
+  "realized_pnl": 0.0,
+  "unrealized_pnl": 0.0,
+  "positions": [],
+  "closed": [],
+  "trade_count": 0,
+  "entries": 0,
+  "cycles": 21,
+  "source": "kraken via CCXT public GET",
+  "status_at_snapshot": "running",
+  "symbols": [
+    "BTC/USD",
+    "ETH/USD",
+    "SOL/USD"
+  ],
+  "prices": {
+    "BTC/USD": {
+      "price": 75785.6,
+      "seen": "2026-11-06T16:24:49-05:00",
+      "source": "kraken"
+    },
+    "ETH/USD": {
+      "price": 2227.28,
+      "seen": "2026-11-06T16:24:52-05:00",
+      "source": "kraken"
+    },
+    "SOL/USD": {
+      "price": 89.94,
+      "seen": "2026-11-06T16:24:54-05:00",
+      "source": "kraken"
+    }
+  },
+  "activity": [
+    {
+      "ts": "2026-11-06T16:03:15-05:00",
+      "kind": "started",
+      "symbol": "",
+      "detail": "Paper simulation only; public market data; $500 original cash"
+    },
+    {
+      "ts": "2026-11-06T16:03:15-05:00",
+      "kind": "error",
+      "symbol": "BTC/USD",
+      "detail": "kraken: PermissionError: PAPER SAFETY: private/non-GET requests forbidden"
+    },
+    {
+      "ts": "2026-11-06T16:03:15-05:00",
+      "kind": "error",
+      "symbol": "BTC/USD",
+      "detail": "coinbaseexchange: PermissionError: PAPER SAFETY: private/non-GET requests forbidden"
+    },
+    {
+      "ts": "2026-11-06T16:03:15-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "Data unavailable: All public data sources failed; no paper action; no action"
+    },
+    {
+      "ts": "2026-11-06T16:03:15-05:00",
+      "kind": "error",
+      "symbol": "ETH/USD",
+      "detail": "kraken: PermissionError: PAPER SAFETY: private/non-GET requests forbidden"
+    },
+    {
+      "ts": "2026-11-06T16:03:15-05:00",
+      "kind": "error",
+      "symbol": "ETH/USD",
+      "detail": "coinbaseexchange: PermissionError: PAPER SAFETY: private/non-GET requests forbidden"
+    },
+    {
+      "ts": "2026-11-06T16:03:15-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "Data unavailable: All public data sources failed; no paper action; no action"
+    },
+    {
+      "ts": "2026-11-06T16:03:15-05:00",
+      "kind": "error",
+      "symbol": "SOL/USD",
+      "detail": "kraken: PermissionError: PAPER SAFETY: private/non-GET requests forbidden"
+    },
+    {
+      "ts": "2026-11-06T16:03:15-05:00",
+      "kind": "error",
+      "symbol": "SOL/USD",
+      "detail": "coinbaseexchange: PermissionError: PAPER SAFETY: private/non-GET requests forbidden"
+    },
+    {
+      "ts": "2026-11-06T16:03:15-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "Data unavailable: All public data sources failed; no paper action; no action"
+    },
+    {
+      "ts": "2026-11-06T16:03:36-05:00",
+      "kind": "started",
+      "symbol": "",
+      "detail": "Paper simulation only; public market data; $500 original cash"
+    },
+    {
+      "ts": "2026-11-06T16:03:40-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public kraken last $75,768.1000; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:03:40-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:03:42-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public kraken last $2,227.0400; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:03:42-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:03:44-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public kraken last $89.8400; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:03:44-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:04:45-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public kraken last $75,779.2000; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:04:45-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:04:47-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public kraken last $2,227.6200; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:04:47-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:04:50-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public kraken last $89.8700; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:04:50-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:05:51-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public kraken last $75,749.2000; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:05:51-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:05:53-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public kraken last $2,226.3700; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:05:53-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:05:55-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public kraken last $89.8600; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:05:55-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:06:57-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public kraken last $75,772.0000; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:06:57-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:06:59-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public kraken last $2,226.0500; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:06:59-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:07:01-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public kraken last $89.8700; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:07:01-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:08:02-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public kraken last $75,771.3000; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:08:02-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:08:05-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public kraken last $2,226.8100; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:08:05-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:08:07-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public kraken last $89.9000; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:08:07-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:09:22-05:00",
+      "kind": "error",
+      "symbol": "BTC/USD",
+      "detail": "kraken: RequestTimeout: kraken GET https://api.kraken.com/0/public/Ticker?pair=XXBTZUSD"
+    },
+    {
+      "ts": "2026-11-06T16:09:22-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public coinbaseexchange last $75,758.3600; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:09:22-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:09:23-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public coinbaseexchange last $2,226.1300; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:09:23-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:09:23-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public coinbaseexchange last $89.8600; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:09:23-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:10:23-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public coinbaseexchange last $75,766.4900; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:10:23-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:10:23-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public coinbaseexchange last $2,226.9100; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:10:23-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:10:23-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public coinbaseexchange last $89.8800; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:10:23-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:11:26-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public coinbaseexchange last $75,779.9900; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:11:26-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:11:26-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public coinbaseexchange last $2,227.3800; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:11:26-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:11:27-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public coinbaseexchange last $89.9200; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:11:27-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:12:27-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public coinbaseexchange last $75,788.0200; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:12:27-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:12:27-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public coinbaseexchange last $2,227.3000; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:12:27-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:12:27-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public coinbaseexchange last $89.9500; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:12:27-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:13:27-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public coinbaseexchange last $75,777.1300; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:13:27-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:13:28-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public coinbaseexchange last $2,227.1100; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:13:28-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:13:28-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public coinbaseexchange last $89.9100; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:13:28-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:14:28-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public coinbaseexchange last $75,786.4900; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:14:28-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:14:28-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public coinbaseexchange last $2,227.8200; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:14:28-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:14:28-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public coinbaseexchange last $89.9500; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:14:28-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:15:28-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public coinbaseexchange last $75,779.6500; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:15:28-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:15:29-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public coinbaseexchange last $2,227.3000; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:15:29-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:15:29-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public coinbaseexchange last $89.9400; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:15:29-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:16:29-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public coinbaseexchange last $75,784.0800; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:16:29-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:16:29-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public coinbaseexchange last $2,227.5900; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:16:29-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:16:29-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public coinbaseexchange last $89.9100; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:16:29-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:17:29-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public coinbaseexchange last $75,782.6600; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:17:29-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:17:30-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public coinbaseexchange last $2,227.2100; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:17:30-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:17:30-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public coinbaseexchange last $89.9100; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:17:30-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:18:30-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public coinbaseexchange last $75,782.6500; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:18:30-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:18:30-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public coinbaseexchange last $2,227.5300; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:18:30-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:18:30-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public coinbaseexchange last $89.9400; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:18:30-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:19:33-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public coinbaseexchange last $75,778.4400; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:19:33-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:19:34-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public coinbaseexchange last $2,227.3900; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:19:34-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:19:34-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public coinbaseexchange last $89.9200; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:19:34-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:20:34-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public coinbaseexchange last $75,778.8400; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:20:34-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:20:34-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public coinbaseexchange last $2,227.7200; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:20:34-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:20:34-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public coinbaseexchange last $89.9700; 80 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:20:34-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:22:37-05:00",
+      "kind": "error",
+      "symbol": "BTC/USD",
+      "detail": "coinbaseexchange: RequestTimeout: coinbaseexchange GET https://api.exchange.coinbase.com/products/BTC-USD/ticker"
+    },
+    {
+      "ts": "2026-11-06T16:22:38-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public kraken last $75,785.3000; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:22:38-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:22:40-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public kraken last $2,228.5200; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:22:40-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:22:42-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public kraken last $90.0000; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:22:42-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:23:44-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public kraken last $75,787.2000; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:23:44-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:23:46-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public kraken last $2,228.4700; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:23:46-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:23:48-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public kraken last $90.0100; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:23:48-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:24:49-05:00",
+      "kind": "looked",
+      "symbol": "BTC/USD",
+      "detail": "Public kraken last $75,785.6000; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:24:49-05:00",
+      "kind": "skipped",
+      "symbol": "BTC/USD",
+      "detail": "no closed-candle breakout above previous 20 highs"
+    },
+    {
+      "ts": "2026-11-06T16:24:52-05:00",
+      "kind": "looked",
+      "symbol": "ETH/USD",
+      "detail": "Public kraken last $2,227.2800; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:24:52-05:00",
+      "kind": "skipped",
+      "symbol": "ETH/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    },
+    {
+      "ts": "2026-11-06T16:24:54-05:00",
+      "kind": "looked",
+      "symbol": "SOL/USD",
+      "detail": "Public kraken last $89.9400; 79 closed 5m candles"
+    },
+    {
+      "ts": "2026-11-06T16:24:54-05:00",
+      "kind": "skipped",
+      "symbol": "SOL/USD",
+      "detail": "trend not clear: SMA20 must exceed SMA50 and rise"
+    }
+  ],
+  "equity_history": [
+    {
+      "time": 1793998995,
+      "value": 500.0
+    },
+    {
+      "time": 1793999024,
+      "value": 500.0
+    },
+    {
+      "time": 1793999090,
+      "value": 500.0
+    },
+    {
+      "time": 1793999155,
+      "value": 500.0
+    },
+    {
+      "time": 1793999221,
+      "value": 500.0
+    },
+    {
+      "time": 1793999287,
+      "value": 500.0
+    },
+    {
+      "time": 1793999363,
+      "value": 500.0
+    },
+    {
+      "time": 1793999423,
+      "value": 500.0
+    },
+    {
+      "time": 1793999487,
+      "value": 500.0
+    },
+    {
+      "time": 1793999547,
+      "value": 500.0
+    },
+    {
+      "time": 1793999608,
+      "value": 500.0
+    },
+    {
+      "time": 1793999668,
+      "value": 500.0
+    },
+    {
+      "time": 1793999729,
+      "value": 500.0
+    },
+    {
+      "time": 1793999789,
+      "value": 500.0
+    },
+    {
+      "time": 1793999850,
+      "value": 500.0
+    },
+    {
+      "time": 1793999910,
+      "value": 500.0
+    },
+    {
+      "time": 1793999974,
+      "value": 500.0
+    },
+    {
+      "time": 1794000034,
+      "value": 500.0
+    },
+    {
+      "time": 1794000162,
+      "value": 500.0
+    },
+    {
+      "time": 1794000228,
+      "value": 500.0
+    },
+    {
+      "time": 1794000294,
+      "value": 500.0
+    }
+  ],
+  "daily": {
+    "2026-11-06": {
+      "entries": 0,
+      "pnl": 0.0
+    }
+  }
+}
